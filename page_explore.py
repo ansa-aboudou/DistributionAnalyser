@@ -456,7 +456,7 @@ def page_explore():
                            #color = self.colors['pdf_line_color'], 
                            #lw=1, label='PDF')
                 # Plot the histogram
-                n, bins, patches = ax.hist(self.x)
+                n, bins, patches = ax.hist(x1)
                 ax.set_xlabel('Values')
                 ax.set_ylabel('Frequency')
                 ax.set_title('Frequency Distribution')
@@ -464,7 +464,8 @@ def page_explore():
                 # Customize the histogram appearance
                 for patch in patches:
                     patch.set_edgecolor(self.colors['pdf_line_color'])
-  
+                plt.show()
+                
                 # Set the shine-on if the checkbox is active
                 if select_pdf_shine:
                     for n in range(1, n_lines):
