@@ -248,11 +248,8 @@ def page_explore():
             
         st.markdown("**What to show on the Figure?**")
 
-        #select_hist = st.checkbox('Histogram', value=True)
-        select_hist, select_hist_frequency = st.columns(2)
-        with select_hist:
-            select_hist = st.checkbox('PDF', value=True)
-            select_hist_frequency = st.empty()
+        select_hist = st.checkbox('Histogram', value=True)
+        select_hist_frequency = st.checkbox('Frequency', value=False)
         
         # Put checkboxes for PDF and Shine in a column
         # If PDF is True (on): Shine can be True/False (on/off)
