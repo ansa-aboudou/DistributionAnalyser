@@ -650,7 +650,10 @@ def page_explore():
                     Figure.sigmas(self, ax=ax[0])
 
                 if select_hist:
-                    Figure.histogram(self, ax=ax[0], density=False)
+                    if select_hist_frequency:
+                        Figure.histogram(self, ax=ax[0], density=False)
+                    else:
+                        Figure.histogram(self, ax=ax[0], density=True)
                 
                 legend = ax[0].legend(bbox_to_anchor=(0,1.02,1,0.2), 
                                       loc="lower left", mode="expand", 
@@ -686,7 +689,10 @@ def page_explore():
                 Figure.pdf_cdf_lines(self, ax=ax)
     
                 if select_hist:
-                    Figure.histogram(self, ax=ax[0], density=False)
+                    if select_hist_frequency:
+                        Figure.histogram(self, ax=ax[0], density=False)
+                    else:
+                        Figure.histogram(self, ax=ax[0], density=True)
     
                 if q1 or q2 or q3:
                     Figure.quantiles(self, ax=ax)
