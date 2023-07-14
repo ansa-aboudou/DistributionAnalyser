@@ -20,7 +20,7 @@ def page_introduction():
     
     st.markdown("<h2 style='text-align: center;'> Welcome To </h2>", 
                 unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center;'> Distribution Analyser ++</h1>", 
+    st.markdown("<h1 style='text-align: center;'> Distribution Analyser +</h1>", 
                 unsafe_allow_html=True)
      
 
