@@ -452,7 +452,7 @@ def page_explore():
             
             # Plot the frozen PDF if checkbox is active
             if select_pdf:
-                ax.plot(self.x1, self.rv.pdf(self.x1), linestyle='-', 
+                ax.plot(self.x, self.rv.pdf(self.x), linestyle='-', 
                            color = self.colors['pdf_line_color'], 
                            lw=1, label='PDF')
                 
