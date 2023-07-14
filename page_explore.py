@@ -591,10 +591,10 @@ def page_explore():
                 which_s(self, s)
                 
 
-        def histogram(self, ax):
+        def histogram(self, ax, density=True):
             """ Histogram properties """
             
-            ax.hist(self.r, density=True, bins=20, 
+            ax.hist(self.r, density=density, bins=20, 
                        edgecolor=self.colors['hist_edge_color'], 
                        fill = False, #hatch='x',
                        linewidth=1, alpha=1, label='Sample distribution')
