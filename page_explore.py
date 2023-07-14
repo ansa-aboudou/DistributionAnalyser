@@ -220,6 +220,9 @@ def page_explore():
 
             mean = np.mean(dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=20000))
+
+            if select_distribution:
+                st.markdown(f"<h1 style='text-align: center;'>{mean}</h1>", unsafe_allow_html=True)
             
         return x, r, rv, mean
     
