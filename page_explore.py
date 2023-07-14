@@ -258,7 +258,7 @@ def page_explore():
                 select_hist_frequency = st.empty()
             else:
                 with select_hist_frequency:
-                    select_hist_frequency = st.checkbox('Frequency', value=True)
+                    select_hist_frequency = st.checkbox('Frequency', value=False)
         
         # Put checkboxes for PDF and Shine in a column
         # If PDF is True (on): Shine can be True/False (on/off)
@@ -650,7 +650,10 @@ def page_explore():
                     Figure.sigmas(self, ax=ax[0])
 
                 if select_hist:
-                    Figure.histogram(self, ax=ax[0])
+                    if select_hist_frequency:
+                        Figure.histogram(self, ax=ax[0])
+                    else:
+                        Figure.histogram(self, ax=ax[0], False)
                 
                 legend = ax[0].legend(bbox_to_anchor=(0,1.02,1,0.2), 
                                       loc="lower left", mode="expand", 
@@ -686,7 +689,10 @@ def page_explore():
                 Figure.pdf_cdf_lines(self, ax=ax)
     
                 if select_hist:
-                    Figure.histogram(self, ax=ax)
+                    if select_hist_frequency:
+                        Figure.histogram(self, ax=ax[0])
+                    else:
+                        Figure.histogram(self, ax=ax[0], False)
     
                 if q1 or q2 or q3:
                     Figure.quantiles(self, ax=ax)
