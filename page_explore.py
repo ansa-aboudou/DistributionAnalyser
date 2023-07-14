@@ -56,11 +56,6 @@ def page_explore():
                                            value = 400,
                                            max_value = 800,
                                            step = 1)
-        slider_instance = st.slider('Random instance',
-                                           min_value = 1,
-                                           value = 1,
-                                           max_value = 100,
-                                           step = 1)
       
         st.markdown("**Parameters**")
                     
