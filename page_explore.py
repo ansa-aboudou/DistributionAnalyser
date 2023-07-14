@@ -362,7 +362,7 @@ def page_explore():
         """ Figure class: used to display and manipulate Figure props. """
 
         xlabel = 'X value'
-        ylabel = 'Frequency'
+        ylabel = 'Density'
     
         global_rc_params = {
             'legend.fontsize': 12,
@@ -452,14 +452,13 @@ def page_explore():
             
             # Plot the frozen PDF if checkbox is active
             if select_pdf:
-                ax.plot(self.r, self.rv.pdf(self.r), linestyle='-', 
+                ax.plot(self.x, self.rv.pdf(self.x), linestyle='-', 
                            color = self.colors['pdf_line_color'], 
                            lw=1, label='PDF')
-                
                 # Set the shine-on if the checkbox is active
                 if select_pdf_shine:
                     for n in range(1, n_lines):
-                        ax.plot(self.r, self.rv.pdf(self.r), '-', 
+                        ax.plot(self.x, self.rv.pdf(self.x), '-', 
                                 color = self.colors['pdf_line_color'],
                                 alpha=alpha_value, 
                                 linewidth = (diff_linewidth*n)
@@ -467,13 +466,13 @@ def page_explore():
     
             # Same as above, only for the CDF properties
             if select_cdf:
-                ax.plot(self.r, self.rv.cdf(self.r), linestyle='-', 
+                ax.plot(self.x, self.rv.cdf(self.x), linestyle='-', 
                            color= self.colors['cdf_line_color'], 
                            lw=1, label='CDF')
         
                 if select_cdf_shine:
                     for n in range(1, n_lines):
-                        ax.plot(self.r, self.rv.cdf(self.r), '-', 
+                        ax.plot(self.x, self.rv.cdf(self.x), '-', 
                                 color = self.colors['cdf_line_color'],
                                 alpha=alpha_value, 
                                 linewidth = (diff_linewidth*n))  
@@ -490,13 +489,13 @@ def page_explore():
                                 xy = (x_cdf, self.rv.cdf(x_cdf)), 
                                 color=self.colors['cdf_line_color'])
             if select_sf:
-                ax.plot(self.r, self.rv.sf(self.r), linestyle='-', 
+                ax.plot(self.x, self.rv.sf(self.x), linestyle='-', 
                            color= 'plum', 
                            lw=1, label='SF')
                 
                 if select_sf_shine:
                     for n in range(1, n_lines):
-                        ax.plot(self.r, self.rv.sf(self.r), '-', 
+                        ax.plot(self.x, self.rv.sf(self.x), '-', 
                                 color = 'plum',
                                 alpha=alpha_value, 
                                 linewidth = (diff_linewidth*n)) 
@@ -595,7 +594,7 @@ def page_explore():
         def histogram(self, ax):
             """ Histogram properties """
             
-            ax.hist(self.r, density=False, bins=20, 
+            ax.hist(self.r, density=True, bins=20, 
                        edgecolor=self.colors['hist_edge_color'], 
                        fill = False, #hatch='x',
                        linewidth=1, alpha=1, label='Sample distribution')
@@ -862,7 +861,7 @@ ax[0].plot(x, rv.cdf(x), linestyle='-', color='k', lw=3, label='CDF')
 ax[0].plot(x, rv.sf(x), linestyle='-', color='#df65b0', lw=3, label='SF')
 
 # Plot Histogram
-ax[0].hist(r, density=False, bins=20, color='lightgrey',
+ax[0].hist(r, density=True, bins=20, color='lightgrey',
            edgecolor='k', label='Sample')
 
 # Plot Boxplot
