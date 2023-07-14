@@ -50,11 +50,16 @@ def page_explore():
         select_distribution = st.selectbox(
              'Click below (or type) to choose a distribution',
              display)
-        st.markdown("**Population size**")
-        slider_size = st.slider('Default value: '+'{}'.format("size")+' = '+f'{"400"}',
+        st.markdown("**Distribution info**")
+        slider_size = st.slider('Population size',
                                            min_value = 1,
                                            value = 400,
                                            max_value = 800,
+                                           step = 1)
+        slider_instance = st.slider('Random instance',
+                                           min_value = 1,
+                                           value = 1,
+                                           max_value = 100,
                                            step = 1)
       
         st.markdown("**Parameters**")
@@ -168,7 +173,7 @@ def page_explore():
 
                 return sliders_params, slider_size
 
-        sliders_params, slider_size = obtain_functional_data()
+        sliders_params, slider_size, slider_instance = obtain_functional_data()
     
     
     # Generate title based on the selected distribution
@@ -197,6 +202,7 @@ def page_explore():
         
         # Sample size
         size = slider_size#400
+        np.random.seed(slider_instance)
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
         # scale) which will be in *c_params - as obtained from sliders/input box  
     
