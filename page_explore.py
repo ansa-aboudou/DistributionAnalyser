@@ -196,7 +196,7 @@ def page_explore():
         """
         
         # Sample size
-        size = 400
+        size = slider_size#400
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
         # scale) which will be in *c_params - as obtained from sliders/input box  
     
@@ -866,7 +866,7 @@ np.random.seed(1)
 {a}              
      
 # Generate evenly spaced numbers over a specified interval
-size = 400
+size = {slider_size}#400
 x = np.linspace({select_distribution}.ppf(0.001, {name} loc=loc, scale=scale ), 
                 {select_distribution}.ppf(0.999, {name} loc=loc, scale=scale ),
                 size)
