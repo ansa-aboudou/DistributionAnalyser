@@ -170,7 +170,7 @@ def page_explore():
                         {scipy_link}
                         """)
 
-                return sliders_params, slider_size
+                return sliders_params, slider_size, slider_instance
 
         sliders_params, slider_size, slider_instance = obtain_functional_data()
     
