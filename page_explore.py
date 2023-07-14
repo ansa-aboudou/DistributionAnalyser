@@ -601,10 +601,10 @@ def page_explore():
                 which_s(self, s)
                 
 
-        def histogram(self, ax, dst):
+        def histogram(self, ax, density=True):
             """ Histogram properties """
             
-            ax.hist(self.r, density=dst, bins=20, 
+            ax.hist(self.r, density=density, bins=20, 
                        edgecolor=self.colors['hist_edge_color'], 
                        fill = False, #hatch='x',
                        linewidth=1, alpha=1, label='Sample distribution')
@@ -650,7 +650,7 @@ def page_explore():
                     Figure.sigmas(self, ax=ax[0])
 
                 if select_hist:
-                    Figure.histogram(self, ax=ax[0], False)
+                    Figure.histogram(self, ax=ax[0], density=False)
                 
                 legend = ax[0].legend(bbox_to_anchor=(0,1.02,1,0.2), 
                                       loc="lower left", mode="expand", 
@@ -686,7 +686,7 @@ def page_explore():
                 Figure.pdf_cdf_lines(self, ax=ax)
     
                 if select_hist:
-                    Figure.histogram(self, ax=ax[0], False)
+                    Figure.histogram(self, ax=ax[0], density=False)
     
                 if q1 or q2 or q3:
                     Figure.quantiles(self, ax=ax)
