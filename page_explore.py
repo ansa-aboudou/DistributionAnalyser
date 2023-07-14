@@ -601,7 +601,7 @@ def page_explore():
                 which_s(self, s)
                 
 
-        def histogram(self, ax, density=True):
+        def histogram(self, ax, density):
             """ Histogram properties """
             
             ax.hist(self.r, density=density, bins=20, 
