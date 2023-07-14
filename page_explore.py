@@ -218,15 +218,15 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
-            mean = np.mean(dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
-                         scale = c_params[0][-1], size=20000))
+            mean = round( np.mean( dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+                         scale = c_params[0][-1], size=20000) ), 2)
 
             if select_distribution:
-                st.markdown(f"<h1 style='text-align: center;'>{mean}</h1>", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align: center;'>Current Mean is {mean}</div>", unsafe_allow_html=True)
             
-        return x, r, rv, mean
+        return x, r, rv
     
-    x1, r1, rv1, mean1 = get_multi_parameters(sliders_params)    
+    x1, r1, rv1 = get_multi_parameters(sliders_params)    
     
     
     # Getting equations to display
@@ -431,7 +431,7 @@ def page_explore():
                 }
     
         def __init__(self, x, r, rv, xlabel, ylabel, 
-                     plot_mode, global_rc_params, lines, colors, mean):
+                     plot_mode, global_rc_params, lines, colors):
             """ Set properties """
     
             self.x = x
@@ -442,9 +442,7 @@ def page_explore():
             self.plot_mode = plot_mode
             self.global_rc_params = global_rc_params
             self.lines = lines
-            self.colors = colors
-            self.mean = mean
-        
+            self.colors = colors        
         def display_mode(self):
             """ rcParameters for light and dark mode """
     
@@ -748,7 +746,6 @@ def page_explore():
             Figure.global_rc_params,
             Figure.lines,
             Figure.colors,
-            mean1,
             )
         
         # To obtain whether Light/Dark Mode
