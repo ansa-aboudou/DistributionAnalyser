@@ -468,7 +468,7 @@ def page_explore():
                 # Set the shine-on if the checkbox is active
                 if select_pdf_shine:
                     for n in range(1, n_lines):
-                        ax.plot(self.x, self.r.pdf(self.x), '-', 
+                        ax.plot(self.x, self.r, '-', 
                                 color = self.colors['pdf_line_color'],
                                 alpha=alpha_value, 
                                 linewidth = (diff_linewidth*n)
