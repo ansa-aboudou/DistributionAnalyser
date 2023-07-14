@@ -222,7 +222,7 @@ def page_explore():
                          scale = c_params[0][-1], size=20000) ), 2)
 
             if select_distribution:
-                st.markdown(f"<div style='text-align: center;'>Current Mean is {mean}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align: center;'>Current Mean is <b>{mean}</b></div>", unsafe_allow_html=True)
             
         return x, r, rv
     
