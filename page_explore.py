@@ -230,7 +230,7 @@ def page_explore():
             std = round( np.std( stat_dist ), 2)
 
             if select_distribution:
-                st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is {std}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b></div>", unsafe_allow_html=True)
             
         return x, r, rv
     
