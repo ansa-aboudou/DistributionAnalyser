@@ -50,7 +50,13 @@ def page_explore():
         select_distribution = st.selectbox(
              'Click below (or type) to choose a distribution',
              display)
-        
+        st.markdown("**Population size**")
+        slider_size = st.slider('Default value: '+'{}'.format("size")+' = '+f'{"400"}',
+                                           min_value = 1,
+                                           value = 400,
+                                           max_value = 800,
+                                           step = 1)
+      
         st.markdown("**Parameters**")
                     
         def obtain_functional_data():
@@ -160,9 +166,9 @@ def page_explore():
                         {scipy_link}
                         """)
 
-                return sliders_params
+                return sliders_params, slider_size
 
-        sliders_params = obtain_functional_data()
+        sliders_params, slider_size = obtain_functional_data()
     
     
     # Generate title based on the selected distribution
