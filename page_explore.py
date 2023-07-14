@@ -254,7 +254,7 @@ def page_explore():
         select_hist, select_hist_frequency = st.columns(2)
         with select_hist:
             select_hist = st.checkbox('Histogram', value=True)
-            if select_hist_frequency == False:
+            if select_hist == False:
                 select_hist_frequency = st.empty()
             else:
                 with select_hist_frequency:
