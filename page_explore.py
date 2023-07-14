@@ -452,19 +452,9 @@ def page_explore():
             
             # Plot the frozen PDF if checkbox is active
             if select_pdf:
-                #ax.plot(self.x, self.rv.pdf(self.x), linestyle='-', 
-                           #color = self.colors['pdf_line_color'], 
-                           #lw=1, label='PDF')
-                # Plot the histogram
-                n, bins, patches = ax.hist(x1)
-                ax.set_xlabel('Values')
-                ax.set_ylabel('Frequency')
-                ax.set_title('Frequency Distribution')
-                
-                # Customize the histogram appearance
-                for patch in patches:
-                    patch.set_edgecolor(self.colors['pdf_line_color'])
-                plt.show()
+                ax.plot(self.x, self.rv.pdf(self.x1), linestyle='-', 
+                           color = self.colors['pdf_line_color'], 
+                           lw=1, label='PDF')
                 
                 # Set the shine-on if the checkbox is active
                 if select_pdf_shine:
