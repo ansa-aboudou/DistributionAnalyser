@@ -248,15 +248,7 @@ def page_explore():
             
         st.markdown("**What to show on the Figure?**")
 
-        #select_hist = st.checkbox('Histogram', value=True)
-        select_hist, select_hist_frequency = st.columns(2)
-        with select_hist:
-            select_hist = st.checkbox('Histogram', value=True)
-            if select_hist == False:
-                select_hist_frequency = st.empty()
-            else:
-                with select_hist_frequency:
-                    select_hist_frequency = st.checkbox('Frequency', value=True)
+        select_hist = st.checkbox('Histogram', value=True)
         
         # Put checkboxes for PDF and Shine in a column
         # If PDF is True (on): Shine can be True/False (on/off)
@@ -599,10 +591,10 @@ def page_explore():
                 which_s(self, s)
                 
 
-        def histogram(self, ax, density=True):
+        def histogram(self, ax):
             """ Histogram properties """
             
-            ax.hist(self.r, density=density, bins=20, 
+            ax.hist(self.r, density=True, bins=20, 
                        edgecolor=self.colors['hist_edge_color'], 
                        fill = False, #hatch='x',
                        linewidth=1, alpha=1, label='Sample distribution')
@@ -648,10 +640,7 @@ def page_explore():
                     Figure.sigmas(self, ax=ax[0])
 
                 if select_hist:
-                    if select_hist_frequency:
-                      Figure.histogram(self, ax=ax[0], False)
-                    else:
-                      Figure.histogram(self, ax=ax[0])
+                    Figure.histogram(self, ax=ax[0])
                 
                 legend = ax[0].legend(bbox_to_anchor=(0,1.02,1,0.2), 
                                       loc="lower left", mode="expand", 
@@ -687,10 +676,7 @@ def page_explore():
                 Figure.pdf_cdf_lines(self, ax=ax)
     
                 if select_hist:
-                    if select_hist_frequency:
-                      Figure.histogram(self, ax=ax[0], False)
-                    else:
-                      Figure.histogram(self, ax=ax[0])
+                    Figure.histogram(self, ax=ax)
     
                 if q1 or q2 or q3:
                     Figure.quantiles(self, ax=ax)
