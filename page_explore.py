@@ -362,7 +362,7 @@ def page_explore():
         """ Figure class: used to display and manipulate Figure props. """
 
         xlabel = 'X value'
-        ylabel = 'Density'
+        ylabel = 'Frequency'
     
         global_rc_params = {
             'legend.fontsize': 12,
