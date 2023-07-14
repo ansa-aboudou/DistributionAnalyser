@@ -595,7 +595,7 @@ def page_explore():
         def histogram(self, ax):
             """ Histogram properties """
             
-            ax.hist(self.r, density=True, bins=20, 
+            ax.hist(self.r, density=False, bins=20, 
                        edgecolor=self.colors['hist_edge_color'], 
                        fill = False, #hatch='x',
                        linewidth=1, alpha=1, label='Sample distribution')
@@ -862,7 +862,7 @@ ax[0].plot(x, rv.cdf(x), linestyle='-', color='k', lw=3, label='CDF')
 ax[0].plot(x, rv.sf(x), linestyle='-', color='#df65b0', lw=3, label='SF')
 
 # Plot Histogram
-ax[0].hist(r, density=True, bins=20, color='lightgrey',
+ax[0].hist(r, density=False, bins=20, color='lightgrey',
            edgecolor='k', label='Sample')
 
 # Plot Boxplot
