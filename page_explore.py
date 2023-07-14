@@ -217,10 +217,13 @@ def page_explore():
             # These will be used for making histogram
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
+
+            mean = np.mean(dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+                         scale = c_params[0][-1], size=20000))
             
-        return x, r, rv
+        return x, r, rv, mean
     
-    x1, r1, rv1 = get_multi_parameters(sliders_params)    
+    x1, r1, rv1, mean1 = get_multi_parameters(sliders_params)    
     
     
     # Getting equations to display
@@ -425,7 +428,7 @@ def page_explore():
                 }
     
         def __init__(self, x, r, rv, xlabel, ylabel, 
-                     plot_mode, global_rc_params, lines, colors):
+                     plot_mode, global_rc_params, lines, colors, mean):
             """ Set properties """
     
             self.x = x
@@ -437,7 +440,7 @@ def page_explore():
             self.global_rc_params = global_rc_params
             self.lines = lines
             self.colors = colors
-    
+            self.mean = mean
         
         def display_mode(self):
             """ rcParameters for light and dark mode """
@@ -742,6 +745,7 @@ def page_explore():
             Figure.global_rc_params,
             Figure.lines,
             Figure.colors,
+            mean1,
             )
         
         # To obtain whether Light/Dark Mode
