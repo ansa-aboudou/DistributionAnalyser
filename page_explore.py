@@ -172,7 +172,7 @@ def page_explore():
 
                 return sliders_params, slider_size
 
-        sliders_params, slider_size = obtain_functional_data()
+        sliders_params, slider_size, slider_instance = obtain_functional_data()
     
     
     # Generate title based on the selected distribution
@@ -201,6 +201,8 @@ def page_explore():
         
         # Sample size
         size = slider_size#400
+        seed = slider_instance
+        np.random.seed(seed)
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
         # scale) which will be in *c_params - as obtained from sliders/input box  
     
