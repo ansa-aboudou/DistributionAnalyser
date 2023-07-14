@@ -224,11 +224,13 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
-            mean = round( np.mean( dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
-                         scale = c_params[0][-1], size=20000) ), 2)
+            stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+                         scale = c_params[0][-1], size=20000)
+            mean = round( np.mean( stat_dist ), 2)
+            std = round( np.std( stat_dist ), 2)
 
             if select_distribution:
-                st.markdown(f"<div style='text-align: center;'>Current Mean is <b>{mean}</b></div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is {std}</div>", unsafe_allow_html=True)
             
         return x, r, rv
     
