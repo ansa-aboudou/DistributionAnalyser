@@ -184,7 +184,7 @@ def scipy_distribution_proper_names():
             'Generalized logistic',
             'Generalized normal',
             'Generalized Pareto',
-            'Gilbrat',
+            #'Gilbrat',
             'Gompertz (or truncated Gumbel)',
             'Left-skewed Gumbel',
             'Right-skewed Gumbel',
@@ -256,6 +256,14 @@ def scipy_distribution_proper_names():
 
     return names
 
+def distr_selectbox_names_over():
+    """
+    Accessing limited version of stats.name. 
+    """
+    names =  ['uniform']
+
+    return names
+
 def distr_selectbox_names():
     """
     Accessing stats.name. 
@@ -298,7 +306,7 @@ def distr_selectbox_names():
              'genlogistic',
              'gennorm',
              'genpareto',
-             'gilbrat',
+             #'gilbrat',
              'gompertz',
              'gumbel_l',
              'gumbel_r',
@@ -413,7 +421,7 @@ def extracted_scipy_urls():
      'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.genlogistic.html#scipy.stats.genlogistic', 
      'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gennorm.html#scipy.stats.gennorm', 
      'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.genpareto.html#scipy.stats.genpareto', 
-     'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gilbrat.html#scipy.stats.gilbrat', 
+     #'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gilbrat.html#scipy.stats.gilbrat', 
      'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gompertz.html#scipy.stats.gompertz', 
      'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gumbel_l.html#scipy.stats.gumbel_l',
      'https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gumbel_r.html#scipy.stats.gumbel_r',
@@ -536,7 +544,7 @@ def obtained_all_dist_params_dict():
              'genlogistic': {'c': '0.41', 'loc': '0.00', 'scale': '1.00'},
              'gennorm': {'beta': '1.30', 'loc': '0.00', 'scale': '1.00'},
              'genpareto': {'c': '0.10', 'loc': '0.00', 'scale': '1.00'},
-             'gilbrat': {'loc': '0.00', 'scale': '1.00'},
+             #'gilbrat': {'loc': '0.00', 'scale': '1.00'},
              'gompertz': {'c': '0.95', 'loc': '0.00', 'scale': '1.00'},
              'gumbel_l': {'loc': '0.00', 'scale': '1.00'},
              'gumbel_r': {'loc': '0.00', 'scale': '1.00'},
@@ -881,7 +889,7 @@ def extract_equations_from_docstrings():
      stats.genlogistic.__doc__,
      stats.gennorm.__doc__,
      stats.genpareto.__doc__,
-     stats.gilbrat.__doc__,
+     #stats.gilbrat.__doc__,
      stats.gompertz.__doc__,
      stats.gumbel_l.__doc__,
      stats.gumbel_r.__doc__,
