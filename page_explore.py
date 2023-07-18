@@ -203,6 +203,8 @@ def page_explore():
                                                        step = 1)
                 else:
                     slider_over = st.empty()
+                    slider_over_loc = st.empty()
+                    slider_over_scale = st.empty()
                 
                 return sliders_params, slider_size, slider_instance, slider_0, slider_over
 
