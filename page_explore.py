@@ -191,12 +191,22 @@ def page_explore():
                                                        value = 0.1,
                                                        max_value = 40.0,
                                                        step = 0.1)
+                    slider_over_loc = st.slider('"loc" parameter (uniform distribution): ',
+                                                       min_value = 200,
+                                                       value = 200,
+                                                       max_value = 400,
+                                                       step = 1)
+                    slider_over_scale = st.slider('"scale" parameter (uniform distribution): ',
+                                                       min_value = 1,
+                                                       value = 200,
+                                                       max_value = 800,
+                                                       step = 1)
                 else:
                     slider_over = st.empty()
                 
                 return sliders_params, slider_size, slider_instance, slider_0, slider_over
 
-        sliders_params, slider_size, slider_instance, slider_0, slider_over = obtain_functional_data()
+        sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale = obtain_functional_data()
     
     
     # Generate title based on the selected distribution
