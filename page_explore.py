@@ -169,17 +169,34 @@ def page_explore():
                         Read more about:
                         {scipy_link}
                         """)
-
-                st.markdown("**Distribution info (Achievements > 200%)**")
-                distrib_over = st.checkbox("Click to add achievements > 200%",  
-                                        value=False)
-                st.markdown("**Distribution info (Achievements == 0%)**")
+              
+                st.markdown("**Achievements == 0%**")
                 distrib_0 = st.checkbox("Click to add achievements == 0%",  
                                         value=False)
-                
-                return sliders_params, slider_size, slider_instance
+                if distrib_0:
+                    slider_0 = st.slider('Percentage of achievwments == 0: ',
+                                                       min_value = 0.1,
+                                                       value = 0.1),
+                                                       max_value = 40,
+                                                       step = 0.1)
+                else:
+                    slider_0 = st.empty()
 
-        sliders_params, slider_size, slider_instance = obtain_functional_data()
+                st.markdown("**Achievements > 200%**")
+                distrib_over = st.checkbox("Click to add achievements > 200%",  
+                                        value=False)
+                if distrib_over:
+                    slider_over = st.slider('Percentage of overachievements: ',
+                                                       min_value = 0.1,
+                                                       value = 0.1),
+                                                       max_value = 40,
+                                                       step = 0.1)
+                else:
+                    slider_over = st.empty()
+                
+                return sliders_params, slider_size, slider_instance, slider_0, slider_over
+
+        sliders_params, slider_size, slider_instance, slider_0, slider_over = obtain_functional_data()
     
     
     # Generate title based on the selected distribution
