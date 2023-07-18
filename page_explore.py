@@ -170,6 +170,13 @@ def page_explore():
                         {scipy_link}
                         """)
 
+                st.markdown("**Distribution info (Achievements > 200%)**")
+                distrib_over = st.checkbox("Click to add achievements > 200%",  
+                                        value=False)
+                st.markdown("**Distribution info (Achievements == 0%)**")
+                distrib_0 = st.checkbox("Click to add achievements == 0%",  
+                                        value=False)
+                
                 return sliders_params, slider_size, slider_instance
 
         sliders_params, slider_size, slider_instance = obtain_functional_data()
