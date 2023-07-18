@@ -174,9 +174,9 @@ def page_explore():
                 distrib_0 = st.checkbox("Click to add achievements == 0%",  
                                         value=False)
                 if distrib_0:
-                    slider_0 = st.slider('Percentage of achievwments == 0: ',
+                    slider_0 = st.slider('Percentage of achievements == 0: ',
                                                        min_value = 0.1,
-                                                       value = 0.1),
+                                                       value = 0.1,
                                                        max_value = 40,
                                                        step = 0.1)
                 else:
@@ -188,7 +188,7 @@ def page_explore():
                 if distrib_over:
                     slider_over = st.slider('Percentage of overachievements: ',
                                                        min_value = 0.1,
-                                                       value = 0.1),
+                                                       value = 0.1,
                                                        max_value = 40,
                                                        step = 0.1)
                 else:
