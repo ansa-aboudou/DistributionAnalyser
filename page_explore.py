@@ -177,7 +177,7 @@ def page_explore():
                     slider_0 = st.slider('Percentage of achievements == 0: ',
                                                        min_value = 0.1,
                                                        value = 0.1,
-                                                       max_value = 40,
+                                                       max_value = 40.0,
                                                        step = 0.1)
                 else:
                     slider_0 = st.empty()
@@ -189,7 +189,7 @@ def page_explore():
                     slider_over = st.slider('Percentage of overachievements: ',
                                                        min_value = 0.1,
                                                        value = 0.1,
-                                                       max_value = 40,
+                                                       max_value = 40.0,
                                                        step = 0.1)
                 else:
                     slider_over = st.empty()
