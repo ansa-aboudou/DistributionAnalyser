@@ -650,7 +650,7 @@ def stats_options():
                  'genlogistic': stats.genlogistic, 
                  'gennorm': stats.gennorm, 
                  'genpareto': stats.genpareto, 
-                 'gilbrat': stats.gilbrat, 
+                 #'gilbrat': stats.gilbrat, 
                  'gompertz': stats.gompertz, 
                  'gumbel_l': stats.gumbel_l, 
                  'gumbel_r': stats.gumbel_r, 
