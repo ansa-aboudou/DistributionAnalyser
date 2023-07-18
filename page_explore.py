@@ -206,7 +206,7 @@ def page_explore():
                     slider_over_loc = st.empty()
                     slider_over_scale = st.empty()
                 
-                return sliders_params, slider_size, slider_instance, slider_0, slider_over
+                return sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale
 
         sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale = obtain_functional_data()
     
