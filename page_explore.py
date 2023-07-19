@@ -274,7 +274,9 @@ def page_explore():
                 p_over = 0
             if type(p_0) != type(float):
                 p_0 = 0
-          
+            st.markdown(p_over, unsafe_allow_html=True)
+            st.markdown(p_0, unsafe_allow_html=True)
+            
             if p_0 != 0:
                 condi_0 = (r <= 0)
             else:
