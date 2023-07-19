@@ -223,7 +223,7 @@ def page_explore():
 
         Parameters
         ----------
-        *c_params : a list of parameters of the distribution function.
+        c_params : a list of parameters of the distribution function.
 
         Returns
         -------
@@ -240,7 +240,7 @@ def page_explore():
         seed = slider_instance
         np.random.seed(seed)
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
-        # scale) which will be in *c_params - as obtained from sliders/input box  
+        # scale) which will be in c_params - as obtained from sliders/input box  
     
         # To be able to use shape parameters and loc/scale values
         # I just tell which are which, as loc/scale are always second to last and last        
@@ -250,20 +250,20 @@ def page_explore():
             dist = getattr(stats, select_distribution)
     
             # Generate evenly spaced numbers over a specified interval
-            x = np.linspace(dist.ppf(0.001, *c_params[j][0:(len(*c_params)-2)],
+            x = np.linspace(dist.ppf(0.001, c_params[j][0:(len(c_params)-2)],
                                      loc = c_params[0][-2], scale = c_params[0][-1]),
-                            dist.ppf(0.999, *c_params[j][0:(len(*c_params)-2)],
+                            dist.ppf(0.999, c_params[j][0:(len(c_params)-2)],
                                      loc = c_params[0][-2], scale = c_params[0][-1]), size)
                 
     
             # Create a frozen random variable "RV" using function parameters
             # It will be used to show the PDF
-            rv = dist(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+            rv = dist(c_params[j][0:(len(c_params)-2)], loc = c_params[0][-2],
                       scale = c_params[0][-1])
     
             # Generate random numbers using the selected distribution
             # These will be used for making histogram
-            r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+            r = dist.rvs(c_params[j][0:(len(c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
             st.markdown(slider_over, unsafe_allow_html=True)
@@ -280,7 +280,7 @@ def page_explore():
             while any(condi_0 | (r >= 200)):
                 invalid_indices = condi_0 | (r >= 200)
                 size_invalid = invalid_indices.sum()
-                r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+                r_invalid = dist.rvs(c_params[j][0:(len(c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size_invalid)
                 r[invalid_indices] = r_invalid
                 if slider_0 != slider_0:
@@ -306,7 +306,7 @@ def page_explore():
             if slider_over != 0:
                 samples[samples == -999] = r_over[samples == -999]
           
-            stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+            stat_dist = dist.rvs(c_params[j][0:(len(c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=20000)
             mean = round( np.mean( stat_dist ), 2)
             std = round( np.std( stat_dist ), 2)
