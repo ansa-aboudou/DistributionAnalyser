@@ -215,7 +215,7 @@ def page_explore():
     if select_distribution:
         st.markdown(f"<h1 style='text-align: center;'>{name_proper_dict[select_distribution]}</h1>", unsafe_allow_html=True)
     
-    def get_multi_parameters(*c_params, perc_0 = 0, perc_over = 0, param_over_loc = 200, param_over_scale = 200):
+    def get_multi_parameters(*c_params):
         """
         This function accepts multiple arguments which will be function 
         parameter values. Each function have 2-6 parameters, two being always
@@ -266,7 +266,7 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
-            if perc_0 != 0:
+            if perc_0:
                 condi_0 = (r <= 0)
             else:
                 condi_0 = (r < 0)
@@ -277,12 +277,12 @@ def page_explore():
                 r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size_invalid)
                 r[invalid_indices] = r_invalid
-                if perc_0 != 0:
+                if perc_0:
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
 
-            if perc_over != 0:
+            if perc_over:
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": param_over_loc, "scale": param_over_scale}
                 rv_over = dist_instance_over(**dict_distr_over)
@@ -310,7 +310,7 @@ def page_explore():
             
         return x, samples, rv
     
-    x1, r1, rv1 = get_multi_parameters(sliders_params, slider_0, slider_over, slider_over_loc, slider_over_scale)    
+    x1, r1, rv1 = get_multi_parameters(sliders_params)    
     
     
     # Getting equations to display
