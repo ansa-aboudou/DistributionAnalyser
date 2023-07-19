@@ -281,8 +281,8 @@ def page_explore():
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
-
-            st.markdown(slider_over != st.empty(), unsafe_allow_html=True)
+            st.markdown(distrib_over, unsafe_allow_html=True)
+            st.markdown(slider_over, unsafe_allow_html=True)
             if slider_over != st.empty():
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": slider_over_loc, "scale": slider_over_scale}
