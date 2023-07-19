@@ -318,7 +318,7 @@ def page_explore():
             if select_distribution:
                 st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b></div>", unsafe_allow_html=True)
             
-        return x, r, rv
+        return x, samples, rv
     
     x1, r1, rv1 = get_multi_parameters(sliders_params)    
     
