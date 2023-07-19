@@ -275,7 +275,7 @@ def page_explore():
             if type(p_0) != type(float):
                 p_0 = 0
           
-            if p_0 != p_0:
+            if p_0 != 0:
                 condi_0 = (r <= 0)
             else:
                 condi_0 = (r < 0)
@@ -286,7 +286,7 @@ def page_explore():
                 r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size_invalid)
                 r[invalid_indices] = r_invalid
-                if p_0 != p_0:
+                if p_0 != 0:
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
