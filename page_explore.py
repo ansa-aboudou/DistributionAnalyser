@@ -238,6 +238,10 @@ def page_explore():
         # Sample size
         size = slider_size#400
         seed = slider_instance
+        p_0 = slider_0
+        p_over = slider_over
+        p_over_loc = slider_over_loc
+        p_over_scale = slider_over_scale
         np.random.seed(seed)
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
         # scale) which will be in *c_params - as obtained from sliders/input box  
