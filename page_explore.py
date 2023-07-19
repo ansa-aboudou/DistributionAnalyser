@@ -284,7 +284,7 @@ def page_explore():
 
             if slider_over:
                 dist_instance_over = getattr(stats, "uniform")
-                dict_distr_over = {"loc": param_over_loc, "scale": param_over_scale}
+                dict_distr_over = {"loc": slider_over_loc, "scale": slider_over_scale}
                 rv_over = dist_instance_over(**dict_distr_over)
                 dict_distr_over["size"] = size
                 r_over = dist_instance_over.rvs(**dict_distr_over)
