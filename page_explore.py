@@ -266,7 +266,7 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
-            if slider_0:
+            if slider_0 != st.empty():
                 condi_0 = (r <= 0)
             else:
                 condi_0 = (r < 0)
@@ -277,13 +277,12 @@ def page_explore():
                 r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size_invalid)
                 r[invalid_indices] = r_invalid
-                if slider_0:
+                if slider_0 != st.empty():
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
 
-            print(slider_over)
-            if slider_over:
+            if slider_over != st.empty():
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": slider_over_loc, "scale": slider_over_scale}
                 rv_over = dist_instance_over(**dict_distr_over)
@@ -298,7 +297,7 @@ def page_explore():
             # Replace values equal to 1 with normal distribution values
             samples[samples == 1] = r[samples == 1]
             # Replace values equal to 2 with uniform distribution values
-            if slider_over != 0:
+            if slider_over != st.empty():
                 samples[samples == -999] = r_over[samples == -999]
           
             stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
