@@ -308,7 +308,8 @@ def page_explore():
             # Replace values equal to 2 with uniform distribution values
             if p_over != 0:
                 samples[samples == -999] = r_over[samples == -999]
-          
+
+            st.markdown(samples, unsafe_allow_html=True)
             stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=20000)
             mean = round( np.mean( stat_dist ), 2)
