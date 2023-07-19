@@ -266,7 +266,7 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
-            if perc_0:
+            if slider_0:
                 condi_0 = (r <= 0)
             else:
                 condi_0 = (r < 0)
@@ -277,12 +277,12 @@ def page_explore():
                 r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size_invalid)
                 r[invalid_indices] = r_invalid
-                if perc_0:
+                if slider_0:
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
 
-            if perc_over:
+            if slider_over:
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": param_over_loc, "scale": param_over_scale}
                 rv_over = dist_instance_over(**dict_distr_over)
@@ -291,13 +291,13 @@ def page_explore():
 
             # Create an array of values [0, 1, 2] with corresponding probabilities
             values = [0, 1, -999]
-            probabilities = [perc_0 / 100, 1 - (perc_0 / 100 + perc_over / 100), perc_over / 100]
+            probabilities = [slider_0 / 100, 1 - (slider_0 / 100 + slider_over / 100), slider_over / 100]
             # Generate random samples from the Bernoulli distribution
             samples = np.random.choice(values, size=size, p=probabilities)
             # Replace values equal to 1 with normal distribution values
             samples[samples == 1] = r[samples == 1]
             # Replace values equal to 2 with uniform distribution values
-            if perc_over != 0:
+            if slider_over != 0:
                 samples[samples == -999] = r_over[samples == -999]
           
             stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
