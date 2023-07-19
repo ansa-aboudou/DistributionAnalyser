@@ -266,9 +266,9 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
             
-            type(slider_over) != type(float):
+            if type(slider_over) != type(float):
                 slider_over = 0
-            type(slider_0) != type(float):
+            if type(slider_0) != type(float):
                 slider_0 = 0
           
             if slider_0 != slider_0:
