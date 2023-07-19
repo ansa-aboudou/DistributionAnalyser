@@ -215,7 +215,7 @@ def page_explore():
     if select_distribution:
         st.markdown(f"<h1 style='text-align: center;'>{name_proper_dict[select_distribution]}</h1>", unsafe_allow_html=True)
     
-    def get_multi_parameters(*c_params):
+    def get_multi_parameters(c_params, slider_0, slider_over, slider_over_loc, slider_over_scale):
         """
         This function accepts multiple arguments which will be function 
         parameter values. Each function have 2-6 parameters, two being always
@@ -316,7 +316,7 @@ def page_explore():
             
         return x, samples, rv
     
-    x1, r1, rv1 = get_multi_parameters(sliders_params)    
+    x1, r1, rv1 = get_multi_parameters(sliders_params, slider_0, slider_over, slider_over_loc, slider_over_scale)    
     
     
     # Getting equations to display
