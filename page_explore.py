@@ -300,7 +300,7 @@ def page_explore():
 
             # Create an array of values [0, 1, 2] with corresponding probabilities
             values = [0, 1, -999]
-            probabilities = [p_0 / 100, 1 - (p_0 / 100 + p_over / 100), p_over / 100]
+            probabilities = [p_0 / 100.0, 1 - (p_0 / 100.0 + p_over / 100.0), p_over / 100.0]
             # Generate random samples from the Bernoulli distribution
             samples = np.random.choice(values, size=size, p=probabilities)
             # Replace values equal to 1 with normal distribution values
