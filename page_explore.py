@@ -243,6 +243,10 @@ def page_explore():
         p_over = slider_over
         p_over_loc = slider_over_loc
         p_over_scale = slider_over_scale
+        if type(p_over) == type(st.empty()):
+            p_over = 0
+        if type(p_0) == type(st.empty()):
+            p_0 = 0
         np.random.seed(seed)
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
         # scale) which will be in *c_params - as obtained from sliders/input box  
@@ -264,11 +268,6 @@ def page_explore():
             # It will be used to show the PDF
             rv = dist(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                       scale = c_params[0][-1])
-            
-            if type(p_over) == type(st.empty()):
-                p_over = 0
-            if type(p_0) == type(st.empty()):
-                p_0 = 0
           
             # Generate random numbers using the selected distribution
             # These will be used for making histogram
