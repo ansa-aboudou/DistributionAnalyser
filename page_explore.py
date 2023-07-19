@@ -215,7 +215,7 @@ def page_explore():
     if select_distribution:
         st.markdown(f"<h1 style='text-align: center;'>{name_proper_dict[select_distribution]}</h1>", unsafe_allow_html=True)
     
-    def get_multi_parameters(c_params):
+    def get_multi_parameters(*c_params):
         """
         This function accepts multiple arguments which will be function 
         parameter values. Each function have 2-6 parameters, two being always
