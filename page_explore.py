@@ -263,18 +263,16 @@ def page_explore():
             # It will be used to show the PDF
             rv = dist(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                       scale = c_params[0][-1])
-    
-            # Generate random numbers using the selected distribution
-            # These will be used for making histogram
-            r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
-                         scale = c_params[0][-1], size=size)
-            stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
-             scale = c_params[0][-1], size=20000)
-
+            
             if type(p_over) == type(st.empty()):
                 p_over = 0
             if type(p_0) == type(st.empty()):
                 p_0 = 0
+          
+            # Generate random numbers using the selected distribution
+            # These will be used for making histogram
+            r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+                         scale = c_params[0][-1], size=size)
             
             if p_0 != 0:
                 condi_0 = (r <= 0)
@@ -309,7 +307,10 @@ def page_explore():
             # Replace values equal to 2 with uniform distribution values
             if p_over != 0:
                 samples[samples == -999] = r_over[samples == -999]
-              
+
+            stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+             scale = c_params[0][-1], size=20000)
+          
             mean = round( np.mean( stat_dist ), 2)
             std = round( np.std( stat_dist ), 2)
 
