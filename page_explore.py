@@ -294,7 +294,7 @@ def page_explore():
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
-            
+            st.markdown(r, unsafe_allow_html=True)
             if p_over != 0:
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": p_over_loc, "scale": p_over_scale}
