@@ -307,6 +307,7 @@ def page_explore():
             st.markdown(samples, unsafe_allow_html=True)
             # Replace values equal to 1 with normal distribution values
             samples[samples == 1] = r[samples == 1]
+            st.markdown(r[samples == 1], unsafe_allow_html=True)
             # Replace values equal to 2 with uniform distribution values
             if p_over != 0:
                 samples[samples == -999] = r_over[samples == -999]
