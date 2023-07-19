@@ -349,7 +349,7 @@ def page_explore():
             mean = round( np.mean( samples_global ), 2)
             std = round( np.std( samples_global ), 2)
 
-            dict_distibution = {"mean": mean, "std":std, "select_distribution":select_distribution, "param_distribution":c_params, "p_0"=p_0, "p_over"=p_over, "overachiev_distribution"="uniform", "overachiev_param":{"loc": p_over_loc, "scale": p_over_scale}}
+            dict_distibution = {"mean": mean, "std":std, "select_distribution":select_distribution, "param_distribution":c_params, "p_0":p_0, "p_over":p_over, "overachiev_distribution":"uniform", "overachiev_param":{"loc": p_over_loc, "scale": p_over_scale}}
           
             if select_distribution:
                 st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b></div>", unsafe_allow_html=True)
