@@ -270,14 +270,14 @@ def page_explore():
                          scale = c_params[0][-1], size=size)
 
             st.markdown(r, unsafe_allow_html=True)
-            st.markdown(p_over, unsafe_allow_html=True)
-            st.markdown(p_0, unsafe_allow_html=True)
+            #st.markdown(p_over, unsafe_allow_html=True)
+            #st.markdown(p_0, unsafe_allow_html=True)
             if type(p_over) == type(st.empty()):
                 p_over = 0
             if type(p_0) == type(st.empty()):
                 p_0 = 0
-            st.markdown(p_over, unsafe_allow_html=True)
-            st.markdown(p_0, unsafe_allow_html=True)
+            #st.markdown(p_over, unsafe_allow_html=True)
+            #st.markdown(p_0, unsafe_allow_html=True)
             
             if p_0 != 0:
                 condi_0 = (r <= 0)
