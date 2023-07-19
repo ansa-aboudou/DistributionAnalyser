@@ -307,7 +307,7 @@ def page_explore():
             probabilities = [p_0 / 100.0, 1 - (p_0 / 100.0 + p_over / 100.0), p_over / 100.0]
             st.markdown(probabilities, unsafe_allow_html=True)
             # Generate random samples from the Bernoulli distribution
-            samples = np.random.choice(values, size=size, p=probabilities)
+            samples = np.random.choice(values, size=size, p=probabilities).astype(float)
             st.markdown(samples, unsafe_allow_html=True)
             # Replace values equal to 1 with normal distribution values
             st.markdown(samples == 1, unsafe_allow_html=True)
