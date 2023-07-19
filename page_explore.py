@@ -269,15 +269,10 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
-            st.markdown(r, unsafe_allow_html=True)
-            #st.markdown(p_over, unsafe_allow_html=True)
-            #st.markdown(p_0, unsafe_allow_html=True)
             if type(p_over) == type(st.empty()):
                 p_over = 0
             if type(p_0) == type(st.empty()):
                 p_0 = 0
-            #st.markdown(p_over, unsafe_allow_html=True)
-            #st.markdown(p_0, unsafe_allow_html=True)
             
             if p_0 != 0:
                 condi_0 = (r <= 0)
