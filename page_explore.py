@@ -247,6 +247,10 @@ def page_explore():
             p_over = 0
         if type(p_0) == type(st.empty()):
             p_0 = 0
+        if type(p_over_loc) == type(st.empty()):
+            p_over_loc = None
+        if type(p_over_scale) == type(st.empty()):
+            p_over_scale = None
         np.random.seed(seed)
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
         # scale) which will be in *c_params - as obtained from sliders/input box  
@@ -347,10 +351,7 @@ def page_explore():
           
             mean = round( np.mean( samples_global ), 2)
             std = round( np.std( samples_global ), 2)
-            if type(p_over) == type(st.empty()):
-                p_over = 0
-            if type(p_0) == type(st.empty()):
-                p_0 = 0
+
             dict_distibution = {"mean": mean, "std":std, "select_distribution":select_distribution, "param_distribution":c_params, "p_0":p_0, "p_over":p_over, "overachiev_distribution":"uniform", "overachiev_param":{"loc": p_over_loc, "scale": p_over_scale}}
           
             if select_distribution:
