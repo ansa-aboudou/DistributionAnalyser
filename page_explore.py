@@ -215,7 +215,7 @@ def page_explore():
     if select_distribution:
         st.markdown(f"<h1 style='text-align: center;'>{name_proper_dict[select_distribution]}</h1>", unsafe_allow_html=True)
     
-    def get_multi_parameters(*c_params):
+    def get_multi_parameters(*c_params, perc_0 = 0, perc_over = 0, param_over_loc = 200, param_over_scale = 200):
         """
         This function accepts multiple arguments which will be function 
         parameter values. Each function have 2-6 parameters, two being always
@@ -266,6 +266,40 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
+            if perc_0 != 0:
+                condi_0 = (r <= 0)
+            else:
+                condi_0 = (r < 0)
+            # Loop to replace negative values and values > 200
+            while any(condi_0 | (r >= 200)):
+                invalid_indices = condi_0 | (r >= 200)
+                size_invalid = invalid_indices.sum()
+                r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+                         scale = c_params[0][-1], size=size_invalid)
+                r[invalid_indices] = r_invalid
+                if perc_0 != 0:
+                    condi_0 = (r <= 0)
+                else:
+                    condi_0 = (r < 0)
+
+            if perc_over != 0:
+                dist_instance_over = getattr(stats, "uniform")
+                dict_distr_over = {"loc": param_over_loc, "scale": param_over_scale}
+                rv_over = dist_instance_over(**dict_distr_over)
+                dict_distr_over["size"] = size
+                r_over = dist_instance_over.rvs(**dict_distr_over)
+
+            # Create an array of values [0, 1, 2] with corresponding probabilities
+            values = [0, 1, -999]
+            probabilities = [perc_0 / 100, 1 - (perc_0 / 100 + perc_over / 100), perc_over / 100]
+            # Generate random samples from the Bernoulli distribution
+            samples = np.random.choice(values, size=size, p=probabilities)
+            # Replace values equal to 1 with normal distribution values
+            samples[samples == 1] = r[samples == 1]
+            # Replace values equal to 2 with uniform distribution values
+            if perc_over != 0:
+                samples[samples == -999] = r_over[samples == -999]
+          
             stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=20000)
             mean = round( np.mean( stat_dist ), 2)
@@ -274,9 +308,9 @@ def page_explore():
             if select_distribution:
                 st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b></div>", unsafe_allow_html=True)
             
-        return x, r, rv
+        return x, samples, rv
     
-    x1, r1, rv1 = get_multi_parameters(sliders_params)    
+    x1, r1, rv1 = get_multi_parameters(sliders_params, slider_0, slider_over, slider_over_loc, slider_over_scale)    
     
     
     # Getting equations to display
