@@ -206,9 +206,9 @@ def page_explore():
                     slider_over_loc = st.empty()
                     slider_over_scale = st.empty()
                 
-                return sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale
+                return sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale, distrib_over
 
-        sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale = obtain_functional_data()
+        sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale, distrib_over = obtain_functional_data()
     
     
     # Generate title based on the selected distribution
