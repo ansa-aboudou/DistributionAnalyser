@@ -355,7 +355,7 @@ def page_explore():
             dict_distibution = {"mean": mean, "std":std, "select_distribution":select_distribution, "param_distribution":c_params, "p_0":p_0, "p_over":p_over, "overachiev_distribution":"uniform", "overachiev_param":{"loc": p_over_loc, "scale": p_over_scale}}
           
             if select_distribution:
-                st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b></div>, copy this json to export config", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b>, copy this json to export config:</div>", unsafe_allow_html=True)
                 st.markdown(dict_distibution, unsafe_allow_html=True)
         return x, samples, rv
     
