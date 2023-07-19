@@ -206,9 +206,9 @@ def page_explore():
                     slider_over_loc = st.empty()
                     slider_over_scale = st.empty()
                 
-                return sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale, distrib_over
+                return sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale
 
-        sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale, distrib_over = obtain_functional_data()
+        sliders_params, slider_size, slider_instance, slider_0, slider_over, slider_over_loc, slider_over_scale = obtain_functional_data()
     
     
     # Generate title based on the selected distribution
@@ -266,7 +266,7 @@ def page_explore():
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
 
-            if slider_0 != st.empty():
+            if type(slider_0) = type(float):
                 condi_0 = (r <= 0)
             else:
                 condi_0 = (r < 0)
@@ -277,13 +277,13 @@ def page_explore():
                 r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size_invalid)
                 r[invalid_indices] = r_invalid
-                if slider_0 != st.empty():
+                if type(slider_0) = type(float):
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
-            st.markdown(distrib_over, unsafe_allow_html=True)
-            st.markdown(slider_over, unsafe_allow_html=True)
-            if slider_over != st.empty():
+            
+            st.markdown(type(slider_over), unsafe_allow_html=True)
+            if type(slider_over) = type(float):
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": slider_over_loc, "scale": slider_over_scale}
                 rv_over = dist_instance_over(**dict_distr_over)
