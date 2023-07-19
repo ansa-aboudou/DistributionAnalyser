@@ -265,7 +265,8 @@ def page_explore():
             # These will be used for making histogram
             r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=size)
-            
+
+            st.markdown(slider_over, unsafe_allow_html=True)
             if type(slider_over) != type(float):
                 slider_over = 0
             if type(slider_0) != type(float):
@@ -287,7 +288,6 @@ def page_explore():
                 else:
                     condi_0 = (r < 0)
             
-            st.markdown(slider_over, unsafe_allow_html=True)
             if slider_over != 0:
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": slider_over_loc, "scale": slider_over_scale}
