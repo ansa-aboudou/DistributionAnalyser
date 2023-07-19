@@ -237,7 +237,7 @@ def page_explore():
         
         # Sample size
         size = slider_size#400
-        size_global = 40000
+        size_global = 100000
         seed = slider_instance
         p_0 = slider_0
         p_over = slider_over
