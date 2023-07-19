@@ -294,7 +294,7 @@ def page_explore():
                     condi_0 = (r <= 0)
                 else:
                     condi_0 = (r < 0)
-            st.markdown(r, unsafe_allow_html=True)
+          
             if p_over != 0:
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": p_over_loc, "scale": p_over_scale}
@@ -305,19 +305,14 @@ def page_explore():
             # Create an array of values [0, 1, 2] with corresponding probabilities
             values = [0, 1, -999]
             probabilities = [p_0 / 100.0, 1 - (p_0 / 100.0 + p_over / 100.0), p_over / 100.0]
-            st.markdown(probabilities, unsafe_allow_html=True)
             # Generate random samples from the Bernoulli distribution
             samples = np.random.choice(values, size=size, p=probabilities).astype(float)
-            st.markdown(samples, unsafe_allow_html=True)
             # Replace values equal to 1 with normal distribution values
-            st.markdown(samples == 1, unsafe_allow_html=True)
-            st.markdown(r[samples == 1], unsafe_allow_html=True)
             samples[samples == 1] = r[samples == 1]
             # Replace values equal to 2 with uniform distribution values
             if p_over != 0:
                 samples[samples == -999] = r_over[samples == -999]
 
-            st.markdown(samples, unsafe_allow_html=True)
             stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
                          scale = c_params[0][-1], size=20000)
             mean = round( np.mean( stat_dist ), 2)
