@@ -282,6 +282,7 @@ def page_explore():
                 else:
                     condi_0 = (r < 0)
 
+            print(slider_over)
             if slider_over:
                 dist_instance_over = getattr(stats, "uniform")
                 dict_distr_over = {"loc": slider_over_loc, "scale": slider_over_scale}
