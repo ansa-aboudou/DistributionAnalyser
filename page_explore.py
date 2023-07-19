@@ -237,6 +237,7 @@ def page_explore():
         
         # Sample size
         size = slider_size#400
+        size_global = 20000
         seed = slider_instance
         p_0 = slider_0
         p_over = slider_over
@@ -308,11 +309,45 @@ def page_explore():
             if p_over != 0:
                 samples[samples == -999] = r_over[samples == -999]
 
-            stat_dist = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
-             scale = c_params[0][-1], size=20000)
+            r = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+             scale = c_params[0][-1], size=size_global)
+
+            if p_0 != 0:
+                condi_0 = (r <= 0)
+            else:
+                condi_0 = (r < 0)
+            # Loop to replace negative values and values > 200
+            while any(condi_0 | (r >= 200)):
+                invalid_indices = condi_0 | (r >= 200)
+                size_invalid = invalid_indices.sum()
+                r_invalid = dist.rvs(*c_params[j][0:(len(*c_params)-2)], loc = c_params[0][-2],
+                         scale = c_params[0][-1], size=size_invalid)
+                r[invalid_indices] = r_invalid
+                if p_0 != 0:
+                    condi_0 = (r <= 0)
+                else:
+                    condi_0 = (r < 0)
           
-            mean = round( np.mean( stat_dist ), 2)
-            std = round( np.std( stat_dist ), 2)
+            if p_over != 0:
+                dist_instance_over = getattr(stats, "uniform")
+                dict_distr_over = {"loc": p_over_loc, "scale": p_over_scale}
+                rv_over = dist_instance_over(**dict_distr_over)
+                dict_distr_over["size"] = size_global
+                r_over = dist_instance_over.rvs(**dict_distr_over)
+
+            # Create an array of values [0, 1, 2] with corresponding probabilities
+            values = [0, 1, -999]
+            probabilities = [p_0 / 100.0, 1 - (p_0 / 100.0 + p_over / 100.0), p_over / 100.0]
+            # Generate random samples_global from the Bernoulli distribution
+            samples_global = np.random.choice(values, size=size_global, p=probabilities).astype(float)
+            # Replace values equal to 1 with normal distribution values
+            samples_global[samples_global == 1] = r[samples_global == 1]
+            # Replace values equal to 2 with uniform distribution values
+            if p_over != 0:
+                samples_global[samples_global == -999] = r_over[samples_global == -999]
+          
+            mean = round( np.mean( samples_global ), 2)
+            std = round( np.std( samples_global ), 2)
 
             if select_distribution:
                 st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b></div>", unsafe_allow_html=True)
