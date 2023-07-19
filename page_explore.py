@@ -302,9 +302,9 @@ def page_explore():
             values = [0, 1, -999]
             probabilities = [p_0 / 100.0, 1 - (p_0 / 100.0 + p_over / 100.0), p_over / 100.0]
             st.markdown(probabilities, unsafe_allow_html=True)
-            st.markdown(samples, unsafe_allow_html=True)
             # Generate random samples from the Bernoulli distribution
             samples = np.random.choice(values, size=size, p=probabilities)
+            st.markdown(samples, unsafe_allow_html=True)
             # Replace values equal to 1 with normal distribution values
             samples[samples == 1] = r[samples == 1]
             # Replace values equal to 2 with uniform distribution values
