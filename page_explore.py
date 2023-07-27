@@ -248,9 +248,9 @@ def page_explore():
         if type(p_0) == type(st.empty()):
             p_0 = 0
         if type(p_over_loc) == type(st.empty()):
-            p_over_loc = None
+            p_over_loc = ""
         if type(p_over_scale) == type(st.empty()):
-            p_over_scale = None
+            p_over_scale = ""
         np.random.seed(seed)
         # Current scipy functions have from 2 to 6 parameters (counting loc & 
         # scale) which will be in *c_params - as obtained from sliders/input box  
@@ -352,7 +352,7 @@ def page_explore():
             mean = round( np.mean( samples_global ), 2)
             std = round( np.std( samples_global ), 2)
 
-            dict_distibution = {"headcounts": size, "mean": mean, "std":std, "select_distribution":select_distribution, "param_distribution":c_params[0], "p_0":p_0, "p_over":p_over, "overachiev_distribution":"uniform", "overachiev_param":{"loc": null, "scale": null}}
+            dict_distibution = {"headcounts": size, "mean": mean, "std":std, "select_distribution":select_distribution, "param_distribution":c_params[0], "p_0":p_0, "p_over":p_over, "overachiev_distribution":"uniform", "overachiev_param":{"loc": p_over_loc, "scale": p_over_scale}}
           
             if select_distribution:
                 st.markdown(f"<div style='text-align: center;'>current Mean is <b>{mean}</b> and current Standard deviation is <b>{std}</b>, copy this json to export config</div>", unsafe_allow_html=True)
