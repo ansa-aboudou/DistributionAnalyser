@@ -199,7 +199,7 @@ def page_explore():
                     slider_over_scale = st.slider('"scale" parameter (uniform distribution): ',
                                                        min_value = 1,
                                                        value = 200,
-                                                       max_value = 800,
+                                                       max_value = 1400,
                                                        step = 1)
                 else:
                     slider_over = st.empty()
