@@ -955,6 +955,7 @@ def page_explore():
         stats.loc['var'] = df_data.var().tolist()
         stats.loc['skew'] = df_data.skew().tolist()
         stats.loc['kurt'] = df_data.kurtosis().tolist()
+        stats.loc['test'] = [0]
 
         # Parse to Streamlit
         st.dataframe(stats.rename(columns={0: 'Value'}))
