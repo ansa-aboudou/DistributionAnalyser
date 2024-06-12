@@ -959,6 +959,7 @@ def page_explore():
 
         # Parse to Streamlit
         st.dataframe(stats.rename(columns={0: 'Value'}))
+        st.write('tHIS IS A TEST')
     
     # Radio buttons that control Dark/Light mode
     if plot_mode == 'Dark Mode':
