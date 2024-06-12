@@ -955,8 +955,10 @@ def page_explore():
         stats.loc['var'] = df_data.var().tolist()
         stats.loc['skew'] = df_data.skew().tolist()
         stats.loc['kurt'] = df_data.kurtosis().tolist()
-        stats.loc['overachiev'] = [((df_data > 200) * 1).sum()]
-
+        # Calculate the percentage of values > 200 for each column
+        overachiev = (df_data > 200).sum() / df_data.count() * 100
+        stats.loc['overachiev'] = overachiev.tolist()
+        
         # Parse to Streamlit
         st.dataframe(stats.rename(columns={0: 'Value'}))
     
