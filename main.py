@@ -63,7 +63,7 @@ def main():
             If you like this app please star its
             [**GitHub**](https://github.com/rdzudzar/DistributionAnalyser)
             repo, share it and feel free to open an issue if you find a bug 
-            or if you want some additional features.
+            or if you want some additional features. ++
             """
     )
 
